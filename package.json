@@ -11,6 +11,7 @@
   ],
   "license": "MIT",
   "author": "Zhu Bei",
+  "files": ["bin"],
   "bin": {
     "weapp-launcher": "bin/cli.js"
   },
@@ -29,5 +30,8 @@
     "@zb81/eslint-config-ts": "^0.3.0",
     "eslint": "^8.45.0",
     "typescript": "^5.1.6"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   }
 }
