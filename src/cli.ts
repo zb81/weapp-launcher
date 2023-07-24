@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { resolve } from 'path'
-import { execSync } from 'child_process'
+import { exec } from 'child_process'
 import { platform } from 'os'
 import { exists, readFile, writeFile } from 'fs-extra'
 import consola from 'consola'
@@ -13,6 +13,8 @@ interface LauncherConfig {
   devtoolPath: string
   appid: string
 }
+
+let openDevtool = true
 
 async function cli() {
   let config: LauncherConfig
@@ -45,11 +47,18 @@ async function cli() {
       throw new Error('Unknown os')
     }
 
-    execSync(`${devCliPath} open --project ${resolve(process.cwd(), 'dist', 'dev', 'mp-weixin')}`)
-    execSync(`npm run ${config.script}`)
+    const buildSp = exec(`npm run ${config.script}`)
+    buildSp.stdout.on('data', (data) => {
+      const info = data.toString()
+      consola.info(info)
+      if (info.includes('Compiled successfully') && openDevtool) {
+        exec(`${devCliPath} open --project ${resolve(process.cwd(), 'dist', 'dev', 'mp-weixin')}`)
+        openDevtool = false
+      }
+    })
   }
   catch (e) {
-    consola.error('运行失败')
+    consola.error('Error')
     process.exit(1)
   }
 }

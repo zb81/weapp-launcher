@@ -17,6 +17,7 @@ const fs_extra_1 = require("fs-extra");
 const consola_1 = require("consola");
 const config_1 = require("./config");
 const configPath = (0, path_1.resolve)(process.cwd(), 'weapp-launcher.config.json');
+let openDevtool = true;
 function cli() {
     return __awaiter(this, void 0, void 0, function* () {
         let config;
@@ -45,11 +46,18 @@ function cli() {
                 consola_1.default.error('只支持 Windows 或 MacOS');
                 throw new Error('Unknown os');
             }
-            (0, child_process_1.execSync)(`${devCliPath} open --project ${(0, path_1.resolve)(process.cwd(), 'dist', 'dev', 'mp-weixin')}`);
-            (0, child_process_1.execSync)(`npm run ${config.script}`);
+            const buildSp = (0, child_process_1.exec)(`npm run ${config.script}`);
+            buildSp.stdout.on('data', (data) => {
+                const info = data.toString();
+                consola_1.default.info(info);
+                if (info.includes('Compiled successfully') && openDevtool) {
+                    (0, child_process_1.exec)(`${devCliPath} open --project ${(0, path_1.resolve)(process.cwd(), 'dist', 'dev', 'mp-weixin')}`);
+                    openDevtool = false;
+                }
+            });
         }
         catch (e) {
-            consola_1.default.error('运行失败');
+            consola_1.default.error('Error');
             process.exit(1);
         }
     });
