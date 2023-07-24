@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { resolve } from 'path'
 import { execSync } from 'child_process'
 import { platform } from 'os'
