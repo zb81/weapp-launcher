@@ -1,6 +1,6 @@
 # Weapp Launcher
 
-<img src="https://cdn.jsdelivr.net/gh/zb81/blog-assets/images/202307242341736.png"/>
+![Kapture 2023-07-24 at 23.53.50](https://cdn.jsdelivr.net/gh/zb81/blog-assets/images/Kapture%202023-07-24%20at%2023.53.50.gif)
 
 1. install
 
