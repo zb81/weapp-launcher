@@ -1,0 +1,4 @@
+{
+  "extends":["@zb81/ts"],
+  "ignorePatterns": ["bin"]
+}
