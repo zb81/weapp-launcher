@@ -41,12 +41,5 @@ export async function enquirerConfig() {
     }
   }
 
-  const { appid } = await prompt<{ appid: string }>({
-    name: 'appid',
-    type: 'input',
-    required: true,
-    message: '请输入 appid',
-  })
-
-  return { script, devtoolPath, appid }
+  return { script, devtoolPath }
 }

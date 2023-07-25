@@ -11,7 +11,6 @@ const configPath = resolve(process.cwd(), 'weapp-launcher.config.json')
 interface LauncherConfig {
   script: string
   devtoolPath: string
-  appid: string
 }
 
 let openDevtool = true
@@ -50,7 +49,7 @@ async function cli() {
     const buildSp = exec(`npm run ${config.script}`)
     buildSp.stdout.on('data', (data) => {
       const info = data.toString()
-      consola.info(info)
+      consola.log(info)
       if (info.includes('Compiled successfully') && openDevtool) {
         exec(`${devCliPath} open --project ${resolve(process.cwd(), 'dist', 'dev', 'mp-weixin')}`)
         openDevtool = false
