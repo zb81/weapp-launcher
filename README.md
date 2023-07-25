@@ -45,8 +45,7 @@ yarn dev
 > ```json
 > {
 >   "script": "dev",
->   "devtoolPath": "/Applications/wechatwebdevtools.app",
->   "appid": "xxx"
+>   "devtoolPath": "/Applications/wechatwebdevtools.app"
 > }
 > ```
 >
