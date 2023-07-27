@@ -49,4 +49,4 @@ yarn dev
 > }
 > ```
 >
-> Wechat Devtool will be opened automatically when the build completed.
+> Wechat Devtool will launch automatically when the build completed.
