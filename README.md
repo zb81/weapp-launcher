@@ -42,6 +42,7 @@ yarn dev
 
 > `weapp-launcher.config.json` will be generated and saved in `cwd` on the first run.
 >
+>
 > ```json
 > {
 >   "script": "dev",
@@ -50,3 +51,5 @@ yarn dev
 > ```
 >
 > Wechat Devtool will launch automatically when the build completed.
+
+> 📢 The developer tools' path **CANNOT** contain spaces!!!
