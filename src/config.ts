@@ -19,9 +19,16 @@ export async function enquirerConfig() {
   const { script } = await prompt<{ script: string }>({
     name: 'script',
     type: 'select',
-    message: '请选择运行脚本',
+    message: '请选择运行脚本 (例如 dev:weapp)',
     required: true,
     choices,
+  })
+
+  const { dir } = await prompt<{ dir: string }>({
+    name: 'dir',
+    type: 'input',
+    message: '请输入产物所在目录 (Taro -> ./dist, Uniapp -> ./dist/dev/mp-weixin)',
+    required: true,
   })
 
   let devtoolPath: string
@@ -41,5 +48,5 @@ export async function enquirerConfig() {
     }
   }
 
-  return { script, devtoolPath }
+  return { script, dir, devtoolPath }
 }
