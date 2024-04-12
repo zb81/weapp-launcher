@@ -6,7 +6,12 @@ import { prompt } from 'enquirer'
 async function getAllScripts() {
   try {
     const json = await readFile(resolve(process.cwd(), 'package.json'), { encoding: 'utf-8' })
-    return Object.keys(JSON.parse(json).scripts)
+    const allScripts = Object.keys(JSON.parse(json).scripts)
+    const wechatScripts = allScripts.filter(s => s.includes('weapp') || s.includes('weixin'))
+    if (wechatScripts.length > 0) {
+      return wechatScripts
+    }
+    return allScripts
   }
   catch (e) {
     consola.error('package.json 解析失败')

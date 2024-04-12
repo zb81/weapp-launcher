@@ -10,7 +10,7 @@
     "cli"
   ],
   "license": "MIT",
-  "author": "Zhu Bei",
+  "author": "Zhu Bei <hi@zb81.icu>",
   "files": ["bin"],
   "bin": {
     "weapp-launcher": "bin/cli.js"
